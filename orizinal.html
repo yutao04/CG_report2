@@ -54,23 +54,23 @@
         mat.map = texture;
 
         var textureLoader1 = new THREE.TextureLoader();  
-        var texture1 = textureLoader1.load("earth.png");
+        var texture1 = textureLoader1.load("earth1.png");
         var mat1 = new THREE.MeshPhongMaterial();
         mat1.map = texture1;
 
         // 太陽を作成
         var sphereGeometry = new THREE.SphereGeometry( 0.6, 32, 32 ); 
         //半径、垂直方向の分割数、水平方向の分割数
-        var sphere = new THREE.Mesh( sphereGeometry, mat );
-        sphere.position.set( 0, 1, 0 );
-        scene.add( sphere );
+        var sun = new THREE.Mesh( sphereGeometry, mat );
+        sun.position.set( 0, 1, 0 );
+        scene.add( sun );
 
          // 地球を作成
          var sphereGeometry = new THREE.SphereGeometry( 0.3, 32, 32 ); 
         //半径、垂直方向の分割数、水平方向の分割数
-        var sphere = new THREE.Mesh( sphereGeometry, mat1 );
-        sphere.position.set( 2, 1, 0 );
-        scene.add( sphere );
+        var earth = new THREE.Mesh( sphereGeometry, mat1 );
+        earth.position.set( 2, 1, 0 );
+        scene.add( earth );
         update();
 
         // 毎フレーム時に実行されるループイベントです
@@ -80,8 +80,11 @@
           requestAnimationFrame(update);
 
             // 球を回転させる
-          sphere.rotation.x += 0.01;
-          sphere.rotation.y += 0.01;
+          sun.rotation.x += 0.01;
+          sun.rotation.y += 0.01;
+
+          earth.rotation.x += 0.01;
+          earth.rotation.y += 0.01;
         }
       }
     </script>
